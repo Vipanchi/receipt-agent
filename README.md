@@ -2,9 +2,6 @@
 
 AI-powered receipt and invoice parser. Drop an image → GPT-4o extracts vendor, amount, date, and line items via an agentic tool-use loop → auto-appends to Google Sheets.
 
-## Demo
-
-[Add your screen recording GIF or screenshot here]
 
 ## What it does
 
@@ -18,7 +15,7 @@ AI-powered receipt and invoice parser. Drop an image → GPT-4o extracts vendor,
 - **React + Vite** — frontend
 - **GPT-4o** — vision + agentic tool-use loop
 - **OpenAI function calling** — structured data extraction
-- **Google Sheets API v4** — append rows, apply cell formatting
+- **Google Sheets API v4** — append rows
 - **Google OAuth 2.0** — browser-based authentication
 
 ## How the agentic loop works
@@ -42,14 +39,17 @@ This pattern scales to more complex workflows — validation tools, retry logic,
 ### Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/receipt-agent.git
+git clone https://github.com/Vipanchi/receipt-agent.git
 cd receipt-agent
 npm install
 ```
 
-Create a `.env` file:
+Create a `.env` file and add the following:
+
+```bash
 VITE_OPENAI_API_KEY=your_openai_key_here
 VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
+```
 
 Add `http://localhost:5173` to your Google OAuth authorized origins.
 
@@ -59,6 +59,7 @@ npm run dev
 
 ## Project structure
 
+```bash
 src/
 agent/
 index.js        ← agentic loop
@@ -73,3 +74,4 @@ useAgent.js     ← state machine for the workflow
 sheets/
 index.js        ← Google OAuth + Sheets API integration
 
+```
